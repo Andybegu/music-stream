@@ -4,7 +4,7 @@ import MusicCard from "./MusicCard";
 import {useSelector} from "react-redux";
 import Container from "./Container";
 
-function MusicCardContainer() {
+const MusicCardContainer=()=> {
     const {playlists} = useSelector(state => state.musicReducer);
     return (
         <Container>

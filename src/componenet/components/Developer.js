@@ -1,24 +1,23 @@
 import React from 'react';
 import '../assets/scss/Developer.scss';
 import {IconButton} from "@material-ui/core";
-import AvatarImage from "../assets/img/avatar.jpg";
+import AvatarImage from "../assets/img/download.jpeg";
 import {Facebook, Instagram, LinkedIn, Portrait, Twitter} from "@material-ui/icons";
 
 const Developer = () => {
     return (
         <div className={"Developer"}>
-            <h3 className={"Developer-head"}>Meet the developer</h3>
+            <h3 className={"Developer-head"}>Meet the musician</h3>
             <div className="Developer-profile">
                 <div className="Developer-profileCard">
                     <img src={AvatarImage} alt="Profile"/>
                     <div className={"Card-details"}>
-                        <h3>Vishal Singh</h3>
-                        <p>Full Stack developer</p>
-                        <p>Competitive Coder</p>
+                        <h3>DJ kalhi</h3>
+                        <p>musician</p>
                     </div>
                 </div>
                 <div className="Developer-profileDetails">
-                    <p>A Computer Science and Engineering Student at Lovely Professional University, Punjab.</p>
+                    <p>great musician who is renownd in addis</p>
                     <p>Graduating in 2022 and looking for a responsible position to gain practical knowledge</p>
                     <p>A full-stack web developer and a Competitive coder.</p>
                     <p>I love designing fully responsive websites.</p>
@@ -37,9 +36,9 @@ const Developer = () => {
                         <IconButton target={"_blank"} href={"https://www.instagram.com/vishalsingh023/"}  title={"vishalsingh023"}>
                             <Instagram/>
                         </IconButton>
-                        <IconButton target={"_blank"} href={"https://vishal.thetechnician.in/"}  title={"Web Portfolio"}>
+                        {/* <IconButton target={"_blank"} href={"https://vishal.thetechnician.in/"}  title={"Web Portfolio"}>
                             <Portrait/>
-                        </IconButton>
+                        </IconButton> */}
                     </div>
                 </div>
 

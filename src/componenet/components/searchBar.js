@@ -2,7 +2,6 @@ import React, {useEffect, useRef, useState} from "react";
 import SearchSharpIcon from "@material-ui/icons/SearchSharp";
 import CancelIcon from "@material-ui/icons/Cancel";
 import '../assets/scss/SearchBar.scss';
-import '../assets/scss/SearchBar.css';
 import {useDispatch} from "react-redux";
 import {setSearch} from "../../actions/actions";
 import {Link} from "react-router-dom";
@@ -35,7 +34,6 @@ const SearchBar = () => {
     return (
         <div className={`${isSearchBarOpen ? "SearchBar  open" : "SearchBar"}`}>
             <form onSubmit={handleSearch} className={"search-container"}>
-               
                 {
                     isSearchBarOpen &&
                     <>
@@ -49,16 +47,15 @@ const SearchBar = () => {
                                type="text"
                                ref={searchRef}
                         />
-                        
                     </>
                 }
-                <div>
-                {
+            </form>
+            {
                 !isSearchBarOpen &&
                 <div className={"SearchBar-customPlaceholderOpen"}
                      onClick={handleSearchBarOpen}>
                     <SearchSharpIcon style={{color: "grey"}} className="search-icon" fontSize="small"/>
-                    <p className={"hide"}>&nbsp;</p>
+                    <p className={"hide"}>&nbsp;Search</p>
                 </div>
             }
             {
@@ -70,10 +67,7 @@ const SearchBar = () => {
                     <CancelIcon style={{color: "grey"}} className="cancel hide" fontSize="small"/>
                 </div>
             }
-                </div>
 
-            </form>
-            
 
         </div>
     );

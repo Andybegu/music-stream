@@ -1,21 +1,26 @@
 import React,{useContext, useEffect, useState} from "react";
 import Navbar from "../componenet/navbar";
-import "./css/home.css"
-import "./css/home.scss"
+import "./css/Home.scss"
 import { ThemeContext } from "../api/Theme"; 
 import { Skeleton } from "@material-ui/lab";
+import MusicCardContainer from "../componenet/components/MusicCardContainer"
 import MobileTopNavigation from "../componenet/components/MobileTopNavigation";
 import SideBar from "../componenet/components/SideBar";
 import About from "./About";
+import Search from "./Search";
 
 
 const getCurrPage=(pathName)=>{
   switch (pathName){
+    case "/home":
+        return <MusicCardContainer/>
     case "/home/about":
         return <About/>
+        case "/home/search":
+        return <Search/>
         default:
     if(pathName.startsWith("/home/playlist")){
-        return <About/>;
+        return null;
     }
     return null
   }
@@ -65,6 +70,11 @@ setLoading(true);
      <div>
         <SideBar/>
      </div>
+     <div className="main-home">
+     {
+   Page
+     }
+    </div>
     </section>
   </div>
      }

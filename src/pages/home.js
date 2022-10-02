@@ -67,9 +67,6 @@ setLoading(true);
     <Navbar/>
     }
     <section className={"home-music-container"}>
-     <div>
-        <SideBar/>
-     </div>
      <div className="main-home">
      {
    Page

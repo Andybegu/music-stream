@@ -9,7 +9,7 @@ const Brand=()=>{
                 <Link to={"/home"}>
                     <h1>
                         M
-                        <img src={Logo} width={"30px"} alt=""/>
+                        <img src={Logo} width={"20px"} alt=""/>
                         sic
                     </h1>
                 </Link>

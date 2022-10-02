@@ -1,7 +1,10 @@
 .music-card-container{
-  display: flex;
+  display: inline-flex;
+  gap: 20px;
   flex-flow: row wrap;
-  justify-content: space-evenly;
+  // justify-content: space-evenly;
+  // background-color: rgb(41, 29, 70);
+  margin:20px 50px;
 }
 @media only screen and (max-width: 970px) {
   .music-card-container {

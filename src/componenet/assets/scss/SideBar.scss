@@ -26,6 +26,11 @@
     display: flex;
     flex-flow: column;
     width: 100%;
+    @media only screen and (max-width: 970px) {
+      .aside-bar-container{
+width: 10%;
+      }
+    }
   }
   .playlist{
     flex: 1;

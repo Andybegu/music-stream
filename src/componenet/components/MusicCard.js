@@ -36,8 +36,8 @@ function MusicCard(props) {
                 <div className={"Skeleton-top"}>
                     <Skeleton variant="rect" width={210} height={210} />
                     <Box pt={0.5}>
-                        <Skeleton />
-                        <Skeleton width="60%" />
+                        <Skeleton/>
+                        <Skeleton width="60%"/>
                     </Box>
                 </div>
                     :

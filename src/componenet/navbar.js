@@ -8,6 +8,7 @@ import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import DropDownLanguageList from "./components/DropDownLanguageList";
 import DropDownProfile from "./components/DropDownProfile";
 import {Avatar, Button} from "@material-ui/core";
+import SideBar from "./components/SideBar";
 
 const Navbar=()=>{
   const [isLanguageListOpen, setLangList] = useState(false);
@@ -35,7 +36,10 @@ const Navbar=()=>{
                 {/*<NavigationButton href={"/home/add"} name={"Add"}/>*/}
             </div>
             <SearchBar/>
-            <div className={"language"} onClick={handleOpenLanguageList}>
+            <div>
+        <SideBar/>
+     </div>
+            {/* <div className={"language"} onClick={handleOpenLanguageList}>
                 <Button className={"Dropdown-btn"}
                         endIcon={isLanguageListOpen ? <ExpandMoreIcon/> : <ExpandLessIcon/>}>
                     <div className="wrapper">
@@ -58,7 +62,7 @@ const Navbar=()=>{
                     isOpenProfile &&
                     <DropDownProfile/>
                 }
-            </div>
+            </div> */}
         </nav>
     );
 }

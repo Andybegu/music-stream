@@ -2,6 +2,7 @@ import React from "react";
 import SearchBar from "./searchBar";
 import '../assets/scss/MobTopNav.scss';
 import Brand from "./brand";
+import SideBar from "./SideBar";
 
 const MobileTopNavigation =()=>{
 
@@ -9,6 +10,7 @@ const MobileTopNavigation =()=>{
             <nav className="mob-top-navigation">
                 <Brand/>
                 <SearchBar/>
+                <SideBar/>
             </nav>
         );
     }

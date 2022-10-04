@@ -1,82 +1,123 @@
-import React,{useContext, useEffect, useState} from "react";
-import Navbar from "../componenet/navbar";
-import "./css/Home.scss"
-import { ThemeContext } from "../api/Theme"; 
-import { Skeleton } from "@material-ui/lab";
-import MusicCardContainer from "../componenet/components/MusicCardContainer"
+import React, {useContext, useEffect, useState} from "react";
+import './css/Home.scss';
+import Navigation from "../componenet/navbar";
 import MobileTopNavigation from "../componenet/components/MobileTopNavigation";
 import SideBar from "../componenet/components/SideBar";
-import About from "./About";
+import FooterMusicPlayer from "../componenet/components/FooterMusicPlayer";
+import BottomNavigationMobile from "../componenet/components/BottomNavigationMobile";
+import MusicCardContainer from "../componenet/components/MusicCardContainer";
+import {useSelector} from "react-redux";
+import {ThemeContext} from "../api/Theme";
+// import Profile from "./Profile";
+import AddMusic from "../componenet/components/AddMusic";
+import FooterSelectMusic from "../componenet/components/FooterSelectMusic";
+import CurrentPlayingLarge from "../componenet/components/CurrentPlayingLarge";
 import Search from "./Search";
+import About from "./About";
+import Playlist from "../componenet/components/Playlist";
+import {Skeleton} from "@material-ui/lab";
 
-
-const getCurrPage=(pathName)=>{
-  switch (pathName){
-    case "/home":
-        return <MusicCardContainer/>
-    case "/home/about":
-        return <About/>
+function getCurrPage(pathName) {
+    switch (pathName) {
+        case "/home":
+            return <MusicCardContainer/>
         case "/home/search":
-        return <Search/>
+            return <Search/>
+        case "/home/profile":
+            return <Profile/>
+        case "/home/add":
+            return <AddMusic/>
+        case "/home/about":
+            return <About/>
         default:
-    if(pathName.startsWith("/home/playlist")){
-        return null;
+            if (pathName.startsWith("/home/playlist/")) {
+                return <Playlist/>
+            }
+            return null
     }
-    return null
-  }
-  
 }
 
-const Home =()=>{
-const [screenSize,setScreenSize]=useState(undefined)
-// const [currMusic, setCurrMusic] = useState(null);
-    const [Page, setCurrPage] = useState(<About/>);
+function Home() {
 
-let pathname=window.location.pathname
-useEffect(()=>{
-    setCurrPage(getCurrPage(pathname))
-},[pathname])
 
-const handleResize=()=>{
-    setScreenSize(window.innerWidth)
-}
-window.addEventListener("resize",handleResize);
+    const [screenSize, setScreenSize] = useState(undefined);
+    const [currMusic, setCurrMusic] = useState(null);
+    const [Page, setCurrPage] = useState(<MusicCardContainer/>);
 
-useEffect(()=>{
-    handleResize();
-    window.removeEventListener("resize",handleResize)
-})
+    let pathname = window.location.pathname;
+    useEffect(() => {
+        setCurrPage(getCurrPage(pathname))
+    }, [pathname]);
 
-    const useStyle=useContext(ThemeContext)
-    const [loading,setLoading]=useState(false);
+    window.addEventListener("resize", handleResize);
 
-useEffect(()=>{
-setLoading(true);
-},[])
+    function handleResize() {
+        setScreenSize(window.innerWidth);
+    }
 
-    return(
+    useEffect(() => {
+        handleResize();
+        return () => window.removeEventListener("resize", handleResize);
+    });
+
+    const useStyle = useContext(ThemeContext);
+    const {playing, bannerOpen} = useSelector(state => state.musicReducer);
+
+
+    useEffect(() => {
+        setCurrMusic(playing)
+    }, [playing])
+
+    const [loaded, setLoaded] = useState(false);
+    useEffect(() => {
+        setLoaded(true)
+    }, []);
+
+
+    return (
         <div style={useStyle.component} className={"home-container"}>
-     {
-        !loading? <div className="home-skeleton">
-            <Skeleton animation={"wave" }variant={"rect"} height={"100vh"} />
+            {
+                !loaded ?
+                    <div className="Home-skeleton">
+                        <Skeleton animation={"wave"} variant={"rect"} height={"100vh"}/>
+                    </div>
+                    :
+                    <>
+                        {
+                            screenSize <= 670 ?
+                                <MobileTopNavigation/> :
+                                <Navigation/>
+                        }
+                        <section className={"home-music-container"}>
+                            <div className="main-home">
+                                {
+                                    Page
+                                }
+                            </div>
+                        </section>
+                        {
+                            bannerOpen
+                            &&
+                            <section className="current-large-banner">
+                                <CurrentPlayingLarge/>
+                            </section>
+                        }
+                        <React.Fragment>
+                            {
+                                currMusic
+                                    ?
+                                    <FooterMusicPlayer music={currMusic}/>
+                                    :
+                                    <FooterSelectMusic/>
+                            }
+                            {
+                                screenSize <= 670 && <BottomNavigationMobile/>
+                            }
+                        </React.Fragment>
+                    </>
+            }
         </div>
-     :
-   <div>{
-    screenSize <=970 ?
-    <MobileTopNavigation/>:
-    <Navbar/>
-    }
-    <section className={"home-music-container"}>
-     <div className="main-home">
-     {
-   Page
-     }
-    </div>
-    </section>
-  </div>
-     }
-        </div>
-    )
+    );
 }
 
-export default Home
+export default Home;

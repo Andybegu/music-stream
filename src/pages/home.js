@@ -84,7 +84,7 @@ function Home() {
                     :
                     <>
                         {
-                            screenSize <= 670 ?
+                            screenSize <= 970 ?
                                 <MobileTopNavigation/> :
                                 <Navigation/>
                         }
@@ -111,7 +111,7 @@ function Home() {
                                     <FooterSelectMusic/>
                             }
                             {
-                                screenSize <= 670 && <BottomNavigationMobile/>
+                                screenSize <= 970 && <BottomNavigationMobile/>
                             }
                         </React.Fragment>
                     </>

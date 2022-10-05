@@ -21,12 +21,12 @@ function BottomNavigationMobile() {
             href: "/home/search",
             label: "Search"
         },
-        {
-            id: 2,
-            icon: <AccountCircleOutlinedIcon/>,
-            href: "/home/profile",
-            label: "Profile"
-        },
+        // {
+        //     id: 2,
+        //     icon: <AccountCircleOutlinedIcon/>,
+        //     href: "/home/profile",
+        //     label: "Profile"
+        // },
         {
             id: 3,
             icon: <ExploreOutlinedIcon/>,

@@ -1,10 +1,11 @@
 .bottom-navigation {
   display: none;
+  
 }
 
-@media only screen and (max-width: 970px) {
+@media only screen and (max-width: 670px) {
   .bottom-navigation {
-    height: 10vh;
+    height: 8vh;
     display: flex;
   }
   .bottom-navigation div {
